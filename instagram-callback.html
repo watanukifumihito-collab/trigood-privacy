@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>TriGood - Instagram認証</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 600px;
+      margin: 80px auto;
+      padding: 20px;
+      text-align: center;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+  <h2>TriGood Instagram認証</h2>
+  <p id="message">認証結果を確認しています...</p>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const message = document.getElementById("message");
+
+    if (params.has("code")) {
+      message.textContent =
+        "Instagram認証が完了しました。認証コードはURLに含まれています。第三者に共有せず、次の設定手順に進んでください。";
+    } else if (params.has("error")) {
+      message.textContent =
+        "Instagram認証が完了しませんでした。Metaの設定を確認してください。";
+    } else {
+      message.textContent =
+        "このページはInstagram APIの認証用です。";
+    }
+  </script>
+</body>
+</html>
